@@ -575,6 +575,7 @@ font-size: 15px;
     margin-top: 2rem;
     margin-bottom: 0.5rem;
     color: white;
+    cursor: pointer;
 }
 .buy_tomb{
   margin-left: 5rem;

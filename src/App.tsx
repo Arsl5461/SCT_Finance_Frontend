@@ -19,14 +19,15 @@ import Regulations from './views/Regulations/Regulations';
 // import ParticleBackground from './ParticalBackground';
 import { RefreshContextProvider } from './contexts/RefreshContext';
 import Moon from "../src/views/Home/Moon"
+import CemeteryCard from './views/Cemetery';
 
 const Home = lazy(() => import('./views/Home'));
-const Farms = lazy(() => import('./views/Cemetry'));
+const Farms = lazy(() => import('./views/Cemetery'));
 const Boardroom = lazy(() => import('./views/Masonry'));
 const Rebates = lazy(() => import('./views/Rebates'));
 const Bonds = lazy(() => import('./views/Pit'));
 const Treasury = lazy(() => import('./views/Treasury'));
-// const SBS = lazy(() => import('./views/Sbs'));
+ const SBS = lazy(() => import('./views/Cemetery/Cemetery2'));
 // const Liquidity = lazy(() => import('./views/Liquidity'));
 
 const NoMatch = () => (
@@ -79,7 +80,11 @@ const App: React.FC = () => {
             <Route path="/liquidity">
               <Liquidity />
             </Route> */}
+            <Route path="/cemetery">
+              <SBS/>
+            </Route>
             <Route path="*">
+
               <NoMatch />
             </Route>
           </Switch>

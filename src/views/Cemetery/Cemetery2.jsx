@@ -47,15 +47,15 @@ const BackgroundImage = createGlobalStyle`
     background-size: cover !important;
   }
 `;
-const CemetryCards=()=>{
+// const CemetryCards=()=>{
   
-  console.log("Hello World")
-  return(
-    <>
-    <CemeteryCard/>
-    </>
-  )
-}
+//   console.log("Hello World")
+//   return(
+//     <>
+//     <CemeteryCard/>
+//     </>
+//   )
+// }
 
 
 
@@ -88,7 +88,7 @@ const Cemetery = () => {
 <div className='cemetry_heading'>TOMB-FTM-LP</div>
 <div className="deposit">Deposit:</div>
 <div className="deposit">TOMB-FTM-LP Earn TSHARE</div>
-<button className='btn'><NavLink to="/cemetery">View</NavLink></button>
+<button className='btn'>View</button>
   </div>
   <div className="cemetry_cards-1">
   <div className="cemetry_images">
@@ -98,7 +98,7 @@ const Cemetery = () => {
 <div className='cemetry_heading'>TOMB-FTM-LP</div>
 <div className="deposit">Deposit:</div>
 <div className="deposit">TOMB-FTM-LP Earn TSHARE</div>
-<button className='btn'><NavLink to="/cemetery">View</NavLink></button>
+<button className='btn'>View</button>
   </div>
   <div className="cemetry_cards-1">
   <div className="cemetry_images">
@@ -112,7 +112,7 @@ const Cemetery = () => {
   </div>
 
 </div>
-{/* <div className="cemetry-small">
+<div className="cemetry-small">
 
   <div className="cemetry-small-1">
       <div className="heading-cemetry">APR</div>
@@ -155,7 +155,7 @@ const Cemetery = () => {
   <div className="buutons">
   <button className='btn'>Provide liquidity for TOMB-FTM pair now on SpookySwap</button>
   <button className='btn claim'>Claim and withdraw</button>
-  </div>  */}
+  </div> 
   </>
 )
 
