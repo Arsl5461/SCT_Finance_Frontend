@@ -47,15 +47,7 @@ const BackgroundImage = createGlobalStyle`
     background-size: cover !important;
   }
 `;
-const CemetryCards=()=>{
-  
-  console.log("Hello World")
-  return(
-    <>
-    <CemeteryCard/>
-    </>
-  )
-}
+
 
 
 
@@ -67,51 +59,51 @@ const Cemetery = () => {
   const GenesisPoolStartTimeStamp = 1648346400;
   const MainFarmStartTimeStamp = 1648346400;
 
-  return (
-    <>  
-          <BackgroundImage/>
-    <Nav/>
-    <Stats/>
-    <div className="stars"></div>
-      {/* <div className='cemetry'></div> */}
-    <div className='cemetry_title'>
-   <div className="heading wheat">Cemetery</div>
-<div className='bio wheat'>Earn TSHARE by staking LP</div>
-</div>
-<div className="cemetry_cards">
-  <div className="cemetry_cards-1">
-      <div className="cemetry_images">
-  <div class="rounded"><img src={Crypto11} width="50" height="50"/></div>
-  <div class="rounded"><img src={Fantom} width="50" height="50"/></div>
-  </div>
+//   return (
+//     <>  
+//           <BackgroundImage/>
+//     <Nav/>
+//     <Stats/>
+//     <div className="stars"></div>
+//       {/* <div className='cemetry'></div> */}
+//     <div className='cemetry_title'>
+//    <div className="heading wheat">Cemetery</div>
+// <div className='bio wheat'>Earn TSHARE by staking LP</div>
+// </div>
+// <div className="cemetry_cards">
+//   <div className="cemetry_cards-1">
+//       <div className="cemetry_images">
+//   <div class="rounded"><img src={Crypto11} width="50" height="50"/></div>
+//   <div class="rounded"><img src={Fantom} width="50" height="50"/></div>
+//   </div>
 
-<div className='cemetry_heading'>TOMB-FTM-LP</div>
-<div className="deposit">Deposit:</div>
-<div className="deposit">TOMB-FTM-LP Earn TSHARE</div>
-<button className='btn'><NavLink to="/cemetery" className="text">View</NavLink></button>
-  </div>
-  <div className="cemetry_cards-1">
-  <div className="cemetry_images">
-  <div class="rounded"><img src={Crypto11} width="50" height="50"/></div>
-  <div class="rounded"><img src={Fantom} width="50" height="50"/></div>
-  </div>
-<div className='cemetry_heading'>TOMB-FTM-LP</div>
-<div className="deposit">Deposit:</div>
-<div className="deposit">TOMB-FTM-LP Earn TSHARE</div>
-<button className='btn'><NavLink to="/cemetery" className="text">View</NavLink></button>
-  </div>
-  <div className="cemetry_cards-1">
-  <div className="cemetry_images">
-  <div className="rounded"><img src={Crypto11} width="50" height="50"/></div>
-  <div className="rounded"><img src={MAI} width="50" height="50"/></div>
-  </div>
-<div className='cemetry_heading'>TOMB-FTM-LP</div>
-<div className="deposit">Deposit:</div>
-<div className="deposit">TOMB-MAI-LP Earn TSHARE</div>
-<button className='btn'><NavLink to="/cemetery" className="text">View</NavLink></button>
-  </div>
+// <div className='cemetry_heading'>TOMB-FTM-LP</div>
+// <div className="deposit">Deposit:</div>
+// <div className="deposit">TOMB-FTM-LP Earn TSHARE</div>
+// <button className='btn'><NavLink to="/cemetery" className="text">View</NavLink></button>
+//   </div>
+//   <div className="cemetry_cards-1">
+//   <div className="cemetry_images">
+//   <div class="rounded"><img src={Crypto11} width="50" height="50"/></div>
+//   <div class="rounded"><img src={Fantom} width="50" height="50"/></div>
+//   </div>
+// <div className='cemetry_heading'>TOMB-FTM-LP</div>
+// <div className="deposit">Deposit:</div>
+// <div className="deposit">TOMB-FTM-LP Earn TSHARE</div>
+// <button className='btn'><NavLink to="/cemetery" className="text">View</NavLink></button>
+//   </div>
+//   <div className="cemetry_cards-1">
+//   <div className="cemetry_images">
+//   <div className="rounded"><img src={Crypto11} width="50" height="50"/></div>
+//   <div className="rounded"><img src={MAI} width="50" height="50"/></div>
+//   </div>
+// <div className='cemetry_heading'>TOMB-FTM-LP</div>
+// <div className="deposit">Deposit:</div>
+// <div className="deposit">TOMB-MAI-LP Earn TSHARE</div>
+// <button className='btn'><NavLink to="/cemetery" className="text">View</NavLink></button>
+//   </div>
 
-</div>
+// </div>
 {/* <div className="cemetry-small">
 
   <div className="cemetry-small-1">
@@ -156,100 +148,137 @@ const Cemetery = () => {
   <button className='btn'>Provide liquidity for TOMB-FTM pair now on SpookySwap</button>
   <button className='btn claim'>Claim and withdraw</button>
   </div>  */}
-  </>
-)
+//   </>
+// )
 
 
 
-  // return (
-  //   <Switch>
-  //     <Page>
-  //       <Route exact path={path}>
-  //         <BackgroundImage />
+  return (
+    <Switch>
+      <Page>
+        <Route exact path={path}>
+          <BackgroundImage />
           
 
-  //         {!!account ? (
-  //           <Container maxWidth="lg">
-  //             <Typography color="textPrimary" align="center" variant="h3" gutterBottom>
-  //               <strong style={{color:"#ff4c39"}}>Farms</strong>
-  //             </Typography>
-  //             <Box mt={5}>
-  //               <div hidden={activeBanks.filter((bank) => bank.sectionInUI === 2).length === 0}>
-  //                 <Typography color="textPrimary" variant="h4" gutterBottom>
-  //                   <strong style={{color:"#ff4c39"}}>Earn PSHARES by staking LP Tokens</strong>
-  //                 </Typography>
-  //                 <Alert variant="filled" severity="info" style={{ backgroundColor:"#06296e", marginBottom:'20px'}}>
-  //                   Farms start at 6:00 PM UTC on Mar 17
-  //                   <ProgressCountdown base={moment().toDate()} unix_deadline={MainFarmStartTimeStamp} description="Farms start in" />
-  //                 </Alert>
-  //                 <Grid container spacing={3}>
-  //                   {activeBanks
-  //                     .filter((bank) => bank.sectionInUI === 2)
-  //                     .map((bank) => (
-  //                       <React.Fragment key={bank.name}>
-  //                         <CemeteryCard bank={bank} />
-  //                       </React.Fragment>
-  //                     ))}
-  //                 </Grid>
-  //               </div>
+          <Stats/>
+          {!!account ? (
+            <Container maxWidth="lg">
+              <Typography color="textPrimary" align="center" variant="h3" gutterBottom>
+                <strong style={{color:"wheat"}}>Cemetry</strong>
+              </Typography>
+                <div className='bio wheat center'>Earn TSHARE by staking LP</div>
+              <Box mt={5}>
+                <div hidden={activeBanks.filter((bank) => bank.sectionInUI === 2).length === 0}>
+                  <Typography color="textPrimary" variant="h4" gutterBottom>
+                    {/* <strong className='center' style={{color:"wheat"}}>Earn PSHARES by staking LP Tokens</strong> */}
+                  </Typography>
+                   <div className="cemetry_cards">
+   <div className="cemetry_cards-1">
+       <div className="cemetry_images">
+   <div class="rounded"><img src={Crypto11} width="50" height="50"/></div>
+   <div class="rounded"><img src={Fantom} width="50" height="50"/></div>
+   </div>
 
-  //               <div hidden={activeBanks.filter((bank) => bank.sectionInUI === 1).length === 0}>
-  //                 <Typography color="textPrimary" variant="h4" gutterBottom style={{ marginTop: '20px' }}>
-  //                   <strong style={{color:"#ff4c39"}}>Earn SCT by staking LP Tokens</strong>
-  //                 </Typography>
-  //                 {/* <Alert variant="filled" severity="warning">
-  //                   All below pools have ended. Please unstake and collect your rewards.
-  //                 </Alert> */}
-  //                 <Alert variant="filled" severity="info" style={{ backgroundColor:"#06296e", marginBottom:'20px'}}>
-  //                   Farm starts at 6:00 PM UTC on Mar 17 and will run for 3 days.
-  //                   <ProgressCountdown base={moment().toDate()} unix_deadline={MainFarmStartTimeStamp} description="Farm starts in" />
-  //                 </Alert>
-  //                 <Grid container spacing={3} style={{ marginTop: '20px' }}>
-  //                   {activeBanks
-  //                     .filter((bank) => bank.sectionInUI === 1)
-  //                     .map((bank) => (
-  //                       <React.Fragment key={bank.name}>
-  //                         <CemeteryCard bank={bank} />
-  //                       </React.Fragment>
-  //                     ))}
-  //                 </Grid>
-  //               </div>
+ <div className='cemetry_heading'>TOMB-FTM-LP</div>
+ <div className="deposit">Deposit:</div>
+ <div className="deposit">TOMB-FTM-LP Earn TSHARE</div>
+ <button className='btn'><NavLink to="/cemetery" className="text">View</NavLink></button>
+   </div>
+   <div className="cemetry_cards-1">
+   <div className="cemetry_images">
+   <div class="rounded"><img src={Crypto11} width="50" height="50"/></div>
+   <div class="rounded"><img src={Fantom} width="50" height="50"/></div>
+   </div>
+ <div className='cemetry_heading'>TOMB-FTM-LP</div>
+ <div className="deposit">Deposit:</div>
+ <div className="deposit">TOMB-FTM-LP Earn TSHARE</div>
+ <button className='btn'><NavLink to="/cemetery" className="text">View</NavLink></button>
+   </div>
+   <div className="cemetry_cards-1">
+   <div className="cemetry_images">
+   <div className="rounded"><img src={Crypto11} width="50" height="50"/></div>
+   <div className="rounded"><img src={MAI} width="50" height="50"/></div>
+   </div>
+ <div className='cemetry_heading'>TOMB-FTM-LP</div>
+ <div className="deposit">Deposit:</div>
+ <div className="deposit">TOMB-MAI-LP Earn TSHARE</div>
+ <button className='btn'><NavLink to="/cemetery" className="text">View</NavLink></button>
+   </div>
+
+ </div>
+
+                   {/* <Alert variant="filled" severity="info" style={{ backgroundColor:"#06296e", marginBottom:'20px'}}>
+                    Farms start at 6:00 PM UTC on Mar 17
+                    <ProgressCountdown base={moment().toDate()} unix_deadline={MainFarmStartTimeStamp} description="Farms start in" />
+                  </Alert> 
+                   <Grid container spacing={3}>
+                    {activeBanks
+                      .filter((bank) => bank.sectionInUI === 2)
+                      .map((bank) => (
+                        <React.Fragment key={bank.name}>
+                          <CemeteryCard bank={bank} />
+                        </React.Fragment>
+                      ))}
+                  </Grid>  */}
+                </div>
+{/* 
+                 <div hidden={activeBanks.filter((bank) => bank.sectionInUI === 1).length === 0}>
+                  <Typography color="textPrimary" variant="h4" gutterBottom style={{ marginTop: '20px' }}>
+                    <strong style={{color:"#ff4c39"}}>Earn SCT by staking LP Tokens</strong>
+                  </Typography>
+                  <Alert variant="filled" severity="warning">
+                    All below pools have ended. Please unstake and collect your rewards.
+                  </Alert>
+                  <Alert variant="filled" severity="info" style={{ backgroundColor:"#06296e", marginBottom:'20px'}}>
+                    Farm starts at 6:00 PM UTC on Mar 17 and will run for 3 days.
+                    <ProgressCountdown base={moment().toDate()} unix_deadline={MainFarmStartTimeStamp} description="Farm starts in" />
+                  </Alert>
+                  <Grid container spacing={3} style={{ marginTop: '20px' }}>
+                    {activeBanks
+                      .filter((bank) => bank.sectionInUI === 1)
+                      .map((bank) => (
+                        <React.Fragment key={bank.name}>
+                          <CemeteryCard bank={bank} />
+                        </React.Fragment>
+                      ))}
+                  </Grid>
+                </div>  */}
                 
-  //               {/* <Alert variant="filled" severity="info" style={{ marginTop: '50px' }}>
-  //                 All below pools have ended. Please unstake and collect your rewards.
-  //               </Alert> */}
-
-  //               <div hidden={activeBanks.filter((bank) => bank.sectionInUI === 0).length === 0}>
-  //                 <Typography color="textPrimary" variant="h4" gutterBottom style={{ marginTop: '30px', marginBottom: '10px' }}>
-  //                 <strong style={{color:"#ff4c39"}}>Genesis Pools</strong>
-  //                 </Typography>
-  //                 <Alert variant="filled" severity="info" style={{backgroundColor:"#06296e", marginBottom:'20px'}}>
-  //                   Genesis Pools start at 6:00 PM UTC on Mar 17 and will run for 1 day.
-  //                   <ProgressCountdown base={moment().toDate()} unix_deadline={GenesisPoolStartTimeStamp} description="Pools start in" />
-  //                 </Alert>
-  //                 <Grid container spacing={3}>
-  //                   {activeBanks
-  //                     .filter((bank) => bank.sectionInUI === 0)
-  //                     .map((bank) => (
-  //                       <React.Fragment key={bank.name}>
-  //                         <CemeteryCard bank={bank} />
-  //                       </React.Fragment>
-  //                     ))}
-  //                 </Grid>
-  //               </div>
-  //             </Box>
-  //           </Container>
-  //         ) : (
-  //           <UnlockWallet />
-  //         )}
-  //       </Route>
-  //       <Route path={`${path}/:bankId`}>
-  //         <BackgroundImage />
-  //         <Bank />
-  //       </Route>
-  //     </Page>
-  //   </Switch>
-  // );
+                 {/* <Alert variant="filled" severity="info" style={{ marginTop: '50px' }}>
+                  All below pools have ended. Please unstake and collect your rewards.
+                </Alert>  */}
+{/* 
+                 <div hidden={activeBanks.filter((bank) => bank.sectionInUI === 0).length === 0}>
+                  <Typography color="textPrimary" variant="h4" gutterBottom style={{ marginTop: '30px', marginBottom: '10px' }}>
+                  <strong style={{color:"#ff4c39"}}>Genesis Pools</strong>
+                  </Typography>
+                  <Alert variant="filled" severity="info" style={{backgroundColor:"#06296e", marginBottom:'20px'}}>
+                    Genesis Pools start at 6:00 PM UTC on Mar 17 and will run for 1 day.
+                    <ProgressCountdown base={moment().toDate()} unix_deadline={GenesisPoolStartTimeStamp} description="Pools start in" />
+                  </Alert>
+                  <Grid container spacing={3}>
+                    {activeBanks
+                      .filter((bank) => bank.sectionInUI === 0)
+                      .map((bank) => (
+                        <React.Fragment key={bank.name}>
+                          <CemeteryCard bank={bank} />
+                        </React.Fragment>
+                      ))}
+                  </Grid>
+                </div>  */}
+              </Box>
+            </Container>
+          ) : (
+            <UnlockWallet />
+          )}
+        </Route>
+        <Route path={`${path}/:bankId`}>
+          <BackgroundImage />
+          <Bank />
+        </Route>
+      </Page>
+    </Switch>
+  );
 };
 
 export default Cemetery;

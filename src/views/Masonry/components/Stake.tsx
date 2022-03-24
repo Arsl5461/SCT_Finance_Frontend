@@ -18,7 +18,8 @@ import useTokenBalance from '../../../hooks/useTokenBalance';
 import useWithdrawCheck from '../../../hooks/masonry/useWithdrawCheck';
 
 import { getDisplayBalance } from '../../../utils/formatBalance';
-
+import Crypto11 from "../../../assets/img/crypto_tomb_cash.f2b44ef4.png"
+import Fantom from "../../../assets/img/fantom.7660b7c5.svg"
 import DepositModal from './DepositModal';
 import WithdrawModal from './WithdrawModal';
 import useTombFinance from '../../../hooks/useTombFinance';
@@ -77,13 +78,17 @@ const Stake: React.FC = () => {
 
   return (
     <Box>
-      <Card>
+      <Card className="cemetry_cards-1">
         <CardContent>
           <StyledCardContentInner>
             <StyledCardHeader>
-              <CardIcon>
+              {/* <CardIcon>
                 <TokenSymbol symbol="PSHARES" />
-              </CardIcon>
+              </CardIcon> */}
+                                <div className="cemetry_images">
+     <div className="rounded icons-harvest"><img src={Crypto11} width="50" height="50"/></div>
+     <div className="rounded icons-harvest"><img src={Fantom} width="50" height="50"/></div> 
+   </div>
               <Value value={getDisplayBalance(stakedBalance)} />
               <Label text={`≈ $${tokenPriceInDollars}`} color="#ffffff" />
               {/* <Value value={"0.0000"} />

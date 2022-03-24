@@ -22,8 +22,8 @@ import Moon from "../src/views/Home/Moon"
 import CemeteryCard from './views/Cemetery';
 
 const Home = lazy(() => import('./views/Home'));
-const Farms = lazy(() => import('./views/Cemetery'));
-const Boardroom = lazy(() => import('./views/Masonry'));
+const Cemetry = lazy(() => import('./views/Cemetery'));
+const Masonry = lazy(() => import('./views/Masonry'));
 const Rebates = lazy(() => import('./views/Rebates'));
 const Bonds = lazy(() => import('./views/Pit'));
 const Treasury = lazy(() => import('./views/Treasury'));
@@ -57,10 +57,10 @@ const App: React.FC = () => {
               <Home />
             </Route>
             <Route path="/cemetry">
-              <Farms />
+              <Cemetry/>
             </Route>
             <Route path="/masonry">
-              <Boardroom />
+              <Masonry />
             </Route>
             <Route path="/pit">
               <Rebates />

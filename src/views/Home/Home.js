@@ -34,6 +34,7 @@ import Crypto2 from "../../assets/img/crypto_tomb_share.bf1a6c52.png"
 import Meta from "../../assets/img/meta-mask.png"
 import Stats from "./Stats"
 import Nav from "../../components/Nav/Nav"
+import {Link} from "react-router-dom"
 
 // const BackgroundImage = createGlobalStyle`
 //   body {
@@ -173,7 +174,7 @@ Tomb Finance
 The algorithmic token pegged to FTM</div>
 </div>
 <div className='tvl_amount'>
-  TVL <span className='number'>$436,763,672</span>
+  TVL     <CountUp style={{ fontSize: '25px' }} className="number" end={totalTVL} separator="," prefix="$" />
 </div>
 {/* </div> */}
 </div>
@@ -184,42 +185,62 @@ The algorithmic token pegged to FTM</div>
 <div className='card1'>
   <div className='cards_heading'>
     <img src={Crypto1}></img>
-    <p className="title_card">$TBOND</p>
-    <div className="meta">
-    <img src={Meta} className="meta"></img>
-    </div>
+    <p className="title_card">$TOMB</p>
+   
+    <Button
+                onClick={() => {
+                  tombFinance.watchAssetInMetamask('SCT');
+                }}
+                color="secondary"
+                variant="outlined"
+                style={{borderColor: "var(--accent-light)" }}
+              >
+                +&nbsp;
+                <img alt="metamask fox" style={{ width: '20px' }} src={MetamaskFox} />
+              </Button>
+    
   </div>
     <h1 className='white center font12'>Current Price</h1>
-    <p className='purple center font12'>FTM <span className='white font font12'>0.9655</span></p>
-    <p className='purple center font12'>USD <span className='white font12'>$1.27</span></p>
+    <p className='purple center font12'>FTM <span className='white font font12'>{tombPriceInFTM ? tombPriceInFTM : '-.----'}</span></p>
+    <p className='purple center font12'>USD <span className='white font12'>{tombPriceInDollars ? tombPriceInDollars : '-.--'}</span></p>
     <p className='purple center font12'>Market Gap:</p>
-    <h1 className='white center font12'>$324,761,231.35</h1>
+    <h1 className='white center font12'>${(tombCirculatingSupply * tombPriceInDollars).toFixed(2)}</h1>
     <p className='purple center font12'>Circulating Supply:</p>
-    <h1 className='white center font12'>255,779,185</h1>
+    <h1 className='white center font12'>{tombCirculatingSupply}</h1>
     <p className='purple center font12'>Total Supply:</p>
-    <h1 className='white center font12' >225,779,317</h1>
-<button className='buy_tomb center btn font12'>Buy Tomb</button>
+    <h1 className='white center font12' >${tombTotalSupply}</h1>
+<button className='buy_tomb center btn font12'><a className='tomb' href="https://spookyswap.finance/swap?outputCurrency=0x4cdF39285D7Ca8eB3f090fDA0C069ba5F4145B37">Buy Tomb</a></button>
   </div>
   
   {/* Card2 */}
   <div className='card1'>
   <div className='cards_heading'>
     <img src={Crypto1}></img>
-    <h3 className="title_card">$TBOND</h3>
-    <div className="meta">
-    <img src={Meta} className="meta"></img>
-    </div>
+    <h3 className="title_card">$TSHARE</h3>
+   
+    <Button
+                onClick={() => {
+                  tombFinance.watchAssetInMetamask('PSHARES');
+                }}
+                color="secondary"
+                variant="outlined"
+                style={{borderColor: "var(--accent-light)" }}
+              >
+                +&nbsp;
+                <img alt="metamask fox" style={{ width: '25px' }} src={MetamaskFox} />
+              </Button>
+    
   </div>
     <h1 className='white center font12'>Current Price</h1>
-    <p className='purple center font12'>FTM <span className='white font font12'>0.9655</span></p>
-    <p className='purple center font12'>USD <span className='white font12'>$1.27</span></p>
+    <p className='purple center font12'>FTM <span className='white font font12'>{tSharePriceInFTM ? tSharePriceInFTM : '-.----'}</span></p>
+    <p className='purple center font12'>USD <span className='white font12'>{tSharePriceInDollars ? tSharePriceInDollars : '-.--'}</span></p>
     <p className='purple center font12'>Market Gap:</p>
-    <h1 className='white center font12'>$324,761,231.35</h1>
+    <h1 className='white center font12'>{(tShareCirculatingSupply * tSharePriceInDollars).toFixed(2)}</h1>
     <p className='purple center font12'>Circulating Supply:</p>
-    <h1 className='white center font12'>255,779,185</h1>
+    <h1 className='white center font12'>{tBondCirculatingSupply}</h1>
     <p className='purple center font12'>Total Supply:</p>
-    <h1 className='white center font12'>225,779,317</h1>
-<button className='buy_tomb center btn font12'>Buy Tomb</button>
+    <h1 className='white center font12'>${tShareTotalSupply}</h1>
+<button className='buy_tomb center btn font12'><a className='tomb' href="https://spookyswap.finance/swap?outputCurrency=0x4cdF39285D7Ca8eB3f090fDA0C069ba5F4145B37">Buy TSHARE</a></button>
   </div>
   
   {/* Card 3 */}
@@ -227,20 +248,30 @@ The algorithmic token pegged to FTM</div>
   <div className='cards_heading'>
     <img src={Crypto1}></img>
     <h3 className="title_card">$TBOND</h3>
-    <div className="meta">
-    <img src={Meta} className="meta"></img>
-    </div>
+  
+    <Button
+                onClick={() => {
+                  tombFinance.watchAssetInMetamask('PBOND');
+                }}
+                color="secondary"
+                variant="outlined"
+                style={{ borderColor: "var(--accent-light)" }}
+              >
+                +&nbsp;
+                <img alt="metamask fox" style={{ width: '20px' }} src={MetamaskFox} />
+              </Button>
+    
   </div>
     <h1 className='white center font12'>Current Price</h1>
-    <p className='purple center font12'>FTM <span className='white font font12'>0.9655</span></p>
-    <p className='purple center font12'>USD <span className='white font12'>$1.27</span></p>
+    <p className='purple center font12'>FTM <span className='white font font12'>{tBondPriceInFTM ? tBondPriceInFTM : '-.----'}</span></p>
+    <p className='purple center font12'>USD <span className='white font12'>${tBondPriceInDollars ? tBondPriceInDollars : '-.--'}</span></p>
     <p className='purple center font12'>Market Gap:</p>
-    <h1 className='white center font12'>$324,761,231.35</h1>
+    <h1 className='white center font12'>${(tBondCirculatingSupply * tBondPriceInDollars).toFixed(2)}</h1>
     <p className='purple center font12'>Circulating Supply:</p>
-    <h1 className='white center font12'>255,779,185</h1>
+    <h1 className='white center font12'>{tBondCirculatingSupply}</h1>
     <p className='purple center font12'>Total Supply:</p>
-    <h1 className='white center font12'>225,779,317</h1>
-<button className='buy_tomb center btn font12'>Buy Tomb</button>
+    <h1 className='white center font12'>{tBondTotalSupply}</h1>
+<button className='buy_tomb center btn font12'><Link className='tomb' to="/pit">Buy TBOND</Link></button>
   </div>
   
 </div>
@@ -256,124 +287,7 @@ The algorithmic token pegged to FTM</div>
 
       
 
-      {/* <Grid container spacing={3}> */}
-        {/* Logo */}
-        {/* <Grid container item xs={12} sm={4} justify="center">
-          <Paper>xs=6 sm=3</Paper>
-          <Image color="none" style={{ width: '350px', height: '350px', paddingTop: '0px' }} src={CashImage} />
-        </Grid> */}
-        {/* Explanation text */}
-        {/* <Grid item xs={12} sm={8}>
-          <Paper style={{ backgroundColor: "transparent", boxShadow: "none", border: "1px solid var(--white)", fontSize: "20px" }}>
-            <Box  style={{"text-align": "center"}} p={4}>
-              <h2>EARN DAILY YIELDS AT <span style={{color:"#ff4c39"}}>SCT FINANCE</span></h2>
-              <p>SCT is an algocoin which is designed to follow the price of 0.1 <span style={{color:"#e84142"}}>AVAX</span></p>
-              <p>SCT utilizes multiple bonding mechanisms at the <StyledLink style={{color:"#e84142"}} href="/rebates">DAO</StyledLink> as well as seigniorage.</p>
-              <p>
-                Stake your SCT-WAVAX LP in the <StyledLink style={{color:"#e84142"}} href="/farms">FARMS</StyledLink> to earn PSHARES rewards.
-              </p>
-              <p>
-                Then stake your earned PSHARES in the <StyledLink  style={{color:"#e84142"}} href="/boardroom">ROOM</StyledLink> to maximize profits!
-              </p>
-              <p>
-              <ProgressCountdown base={moment().toDate()} unix_deadline={MainFarmStartTimeStamp} description="Genesis Pools and All Farms Launch in : " />
-              </p>
-            </Box>
-          </Paper>
-
-
-
-        </Grid> */}
-
-        {/* <Grid container justify="center">
-            <Box mt={3} style={{ width: '1000px' }}>
-            <Alert variant="filled" >
-                New <strong style={{color: "red"}}>XFarm</strong>(Earn SCT by staking SCT-WAVAX LP) is added. That is about to launch. Please visit XFARMS
-            </Alert>
-            </Box>
-        </Grid> */}
-
-        {/* <Grid container spacing={3}>
-    <Grid item  xs={12} sm={12} justify="center"  style={{ margin: '12px', display: 'flex' }}>
-            <Alert severity="warning" style={{ backgroundColor: "transparent", border: "1px solid var(--white)" }}>
-              <b>
-      Please visit our <StyledLink target="_blank" href="https://docs.tomb.finance">documentation</StyledLink> before purchasing TOMB or TSHARE!</b>
-            </Alert>
-        </Grid>
-        </Grid> */}
-
-        {/* TVL */}
-        {/* <Grid item xs={12} sm={4}>
-          <Card style={{ backgroundColor: "transparent", boxShadow: "none", border: "1px solid var(--white)" }}>
-            <CardContent align="center">
-              <h2>Total Value Locked</h2>
-              <CountUp style={{ fontSize: '25px' }} end={totalTVL} separator="," prefix="$" />
-            </CardContent>
-          </Card>
-        </Grid> */}
-        {/* Wallet */}
-        {/* <Grid item xs={12} sm={8}>
-          <Card style={{ height: '100%', backgroundColor: "transparent", boxShadow: "none", border: "1px solid var(--white)", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-            <CardContent align="center"> */}
-              {/* <h2 style={{ marginBottom: '20px' }}>Wallet Balance</h2> */}
-              {/* <Button color="primary" href="/farms" variant="contained" style={{ marginRight: '10px' }}>
-                Farms
-              </Button>
-              <Button color="primary" href="/boardroom" variant="contained" style={{ marginRight: '25px' }}>
-                Stake
-              </Button> */}
-              {/* <Button color="primary" href="/masonry" variant="contained" style={{ marginRight: '10px' }}>
-                Stake Now
-              </Button> */}
-              {/* <Button href="/cemetery" variant="contained" style={{ marginRight: '10px' }}>
-                Farm Now
-              </Button> */}
-              {/* <Button
-                color="primary"
-                target="_blank"
-                href="https://traderjoexyz.com/trade?outputCurrency=0x942B549334D6Cc2faAC7Ac28e5534F5A87Cc85C1#/"
-                variant="contained"
-                style={{ margin: '10px 20px 10px 20px' }}
-                className={classes.button}
-              >
-                Buy SCT
-              </Button>
-              <Button color="primary" variant="contained" target="_blank" href="https://traderjoexyz.com/trade?outputCurrency=0xaC5363fbC73E0F54d2541f517094DDd99d58c305#/" style={{ margin: '10px 20px 10px 20px' }} className={classes.button}>
-                Buy PSHARES
-              </Button>
-              <Button color="primary" variant="contained" target="_blank" href="https://dexscreener.com/avalanche/0x942B549334D6Cc2faAC7Ac28e5534F5A87Cc85C1" style={{ margin: '10px 20px 10px 20px' }} className={classes.button}>
-                SCT Chart
-              </Button>
-              <Button color="primary" variant="contained" target="_blank" href="https://dexscreener.com/avalanche/0xaC5363fbC73E0F54d2541f517094DDd99d58c305" style={{ margin: '10px 20px 10px 20px' }} className={classes.button}>
-                PSHARES Chart
-              </Button>
-            </CardContent>
-          </Card>
-        </Grid> */}
-
-        {/* TOMB */}
-        {/* <Grid item xs={12} sm={3}>
-          <Card style={{ backgroundColor: "transparent", boxShadow: "none", border: "1px solid var(--white)" }}>
-            <CardContent align="center" style={{ position: 'relative' }}>
-              <h2>AVAX</h2>
-              <Box mt={2} style={{ backgroundColor: "transparent !important" }}>
-                <CardIcon style={{ backgroundColor: "transparent !important" }}>
-                  <TokenSymbol symbol="WAVAX" style={{ backgroundColor: "transparent !important" }} />
-                </CardIcon>
-              </Box>
-              Current Price
-              <Box>
-                <span style={{ fontSize: '30px' }}>${ftmPrice ? ftmPrice : '-.----'} USD</span>
-              </Box>
-              <span style={{ fontSize: '12px' }}>
-                Market Cap: ${ftmMarketCap} <br />
-                Price Change 24h: {ftmPriceChange.toFixed(2)}% <br />
-                <br />
-                <br />
-              </span>
-            </CardContent>
-          </Card>
-        </Grid> */}
+      <Grid container spacing={3}>
 
         {/* TOMB */}
         {/* <Grid item xs={12} sm={3}>
@@ -506,14 +420,14 @@ The algorithmic token pegged to FTM</div>
                 <CardIcon>
                   <TokenSymbol symbol="TOMB-AVAX-LP" />
                 </CardIcon>
-              </Box> */}
+              </Box>
               
-              {/* <Box mt={2}>
+              <Box mt={2}>
                 <Button color="primary" disabled={false} onClick={onPresentTombZap} variant="contained">
                   Zap In
                 </Button>
-              </Box> */}
-              {/* <Box mt={2}>
+              </Box>
+              <Box mt={2}>
                 <span style={{ fontSize: '26px' }}>
                   {tombLPStats?.tokenAmount ? tombLPStats?.tokenAmount : '-.--'} SCT /{' '}
                   {tombLPStats?.ftmAmount ? tombLPStats?.ftmAmount : '-.--'} AVAX
@@ -523,15 +437,15 @@ The algorithmic token pegged to FTM</div>
               <span style={{ fontSize: '12px' }}>
                 Liquidity: ${tombLPStats?.totalLiquidity ? tombLPStats.totalLiquidity : '-.--'} <br />
                 Total supply: {tombLPStats?.totalSupply ? tombLPStats.totalSupply : '-.--'}
-              </span> */}
-            {/* </CardContent>
+              </span> 
+             </CardContent>
           </Card>
         </Grid> */}
         {/* <Grid item xs={12} sm={6}>
           <Card style={{ backgroundColor: "transparent", boxShadow: "none", border: "1px solid var(--white)" }}>
-            <CardContent align="center"> */}
-              {/* <h2>PSHARES-WAVAX Joe LP</h2> */}
-              {/* <Button
+            <CardContent align="center">
+              <h2>PSHARES-WAVAX Joe LP</h2>
+              <Button
                 onClick={() => {
                   tombFinance.watchAssetInMetamask('PSHARES-WAVAX LP');
                 }}
@@ -546,28 +460,28 @@ The algorithmic token pegged to FTM</div>
                 <CardIcon>
                   <TokenSymbol symbol="TSHARE-AVAX-LP" />
                 </CardIcon>
-              </Box> */}
-              {/* <Box mt={2}>
+              </Box>
+              <Box mt={2}>
                 <Button color="primary" onClick={onPresentTshareZap} variant="contained">
                   Zap In
                 </Button>
-            </Box> */}
-              {/* <Box mt={2}>
+            </Box>
+              <Box mt={2}>
                 <span style={{ fontSize: '26px' }}>
                   {tshareLPStats?.tokenAmount ? tshareLPStats?.tokenAmount : '-.--'} PSHARE /{' '}
                   {tshareLPStats?.ftmAmount ? tshareLPStats?.ftmAmount : '-.--'} AVAX
                 </span>
               </Box>
               <Box>${tshareLPStats?.priceOfOne ? tshareLPStats.priceOfOne : '-.--'}</Box>
-              <span style={{ fontSize: '12px' }}>
+              {/* <span style={{ fontSize: '12px' }}>
                 Liquidity: ${tshareLPStats?.totalLiquidity ? tshareLPStats.totalLiquidity : '-.--'}
                 <br />
                 Total supply: {tshareLPStats?.totalSupply ? tshareLPStats.totalSupply : '-.--'}
-              </span> */}
-            {/* </CardContent>
+              </span>  
+             </CardContent>
           </Card>
         </Grid> */}
-      {/* </Grid> */}
+      </Grid>
     </Page>
   );
 };

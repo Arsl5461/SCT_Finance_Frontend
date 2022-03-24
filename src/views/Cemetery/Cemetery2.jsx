@@ -88,7 +88,7 @@ const Cemetery = () => {
 <div className='cemetry_heading'>TOMB-FTM-LP</div>
 <div className="deposit">Deposit:</div>
 <div className="deposit">TOMB-FTM-LP Earn TSHARE</div>
-<button className='btn'>View</button>
+<button className='btn'><NavLink to="/cemetry" className="text">View</NavLink></button>
   </div>
   <div className="cemetry_cards-1">
   <div className="cemetry_images">
@@ -98,7 +98,7 @@ const Cemetery = () => {
 <div className='cemetry_heading'>TOMB-FTM-LP</div>
 <div className="deposit">Deposit:</div>
 <div className="deposit">TOMB-FTM-LP Earn TSHARE</div>
-<button className='btn'>View</button>
+<button className='btn'><NavLink to="/cemetry" className="text">View</NavLink></button>
   </div>
   <div className="cemetry_cards-1">
   <div className="cemetry_images">
@@ -108,7 +108,7 @@ const Cemetery = () => {
 <div className='cemetry_heading'>TOMB-FTM-LP</div>
 <div className="deposit">Deposit:</div>
 <div className="deposit">TOMB-MAI-LP Earn TSHARE</div>
-<button className='btn'><NavLink to="/cemetery" className="text">View</NavLink></button>
+<button className='btn'><NavLink to="/cemetry" className="text">View</NavLink></button>
   </div>
 
 </div>
@@ -153,7 +153,7 @@ const Cemetery = () => {
   </div>
   </div>
   <div className="buutons">
-  <button className='btn'>Provide liquidity for TOMB-FTM pair now on SpookySwap</button>
+  <button className='btn'><a className='tomb' href="https://spookyswap.finance/swap?outputCurrency=0x4cdF39285D7Ca8eB3f090fDA0C069ba5F4145B37">Provide liquidity for TOMB-FTM pair now on SpookySwap</a></button>
   <button className='btn claim'>Claim and withdraw</button>
   </div> 
   </>

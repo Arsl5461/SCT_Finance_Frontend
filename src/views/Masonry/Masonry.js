@@ -86,68 +86,200 @@ const Masonry = () => {
   const rebateStats = useRebateTreasury()
 
   return (
-   
-    <>
+    <Page>
       <BackgroundImage />
-      <Nav/>
       <Stats/>
-      <div className='cemetry_title'>
-     <div className="heading wheat">Masonry</div>
-<div className='bio wheat'>Earn TSHARE by staking LP</div>
-</div>
-<div className="cemetry-small">
+  {!!account ? (
+    <>
+      <Typography color="textPrimary" align="center" variant="h3" gutterBottom>
+        <strong style={{color:"wheat"}}>Masonry</strong>
+         <div className='bio wheat'>Earn TSHARE by staking LP</div>
+      </Typography>
+      <Box mt={5}>
+        <Grid container justify="center" spacing={3}>
+          <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
+            
+              <div className='cemetry-small-3' >
+                <Typography style={{ textAlign: 'center' }}>Next Epoch</Typography>
+                <ProgressCountdown base={moment().toDate()} hideBar={true} deadline={to} description="Next Epoch" />
+              </div>
+            
+          </Grid>
+          <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
+          
+              <div className='cemetry-small-3'>
+                <Typography>Current Epoch</Typography>
+                {/* <Typography>{Number(currentEpoch)}</Typography> */}
+                <Typography>{Number(0)}</Typography>
+              </div>
+         
+          </Grid>
+          <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
+            
+              <div  className='cemetry-small-3'>
+                <Typography>
+                  SCT Price<small> (TWAP)</small>
+                </Typography>
+                <Typography>{rebateStats.tombPrice.toFixed(4)} AVAX</Typography>
+              </div>
+            
+          </Grid>
+          <Grid item xs={12} md={2} lg={2} >
+           
+              <div className='cemetry-small-3'>
+                <Typography>APR</Typography>
+                <Typography>{masonryAPR.toFixed(2)}%</Typography>
+              </div>
+           
+          </Grid>
+          <Grid item xs={12} md={2} lg={2}>
+          
+              <div className='cemetry-small-3'>
+                <Typography>PSHARES Staked</Typography>
+                <Typography>{getDisplayBalance(totalStaked)}</Typography>
+              </div>
+           
+          </Grid>
+        </Grid>
 
-    <div className="cemetry-small-3">
-        <div className="heading-cemetry">Next Epoch</div>
-        <div className="value">02:26:34</div>
-        </div>
-        <div className="cemetry-small-3">
-        <div className="heading-cemetry">APR</div>
-        <div className="value">2,529.80%</div>
-        </div>
-        <div className="cemetry-small-3">
-        <div className="heading-cemetry">Current Epoch</div>
-        <div className="value">1,128</div>
-        </div>
-        <div className="cemetry-small-3">
-        <div className="heading-cemetry">TWAP</div>
-        <div className="value">0.9813</div>
-        </div>
-        <div className="cemetry-small-3">
-        <div className="heading-cemetry">TSHARE Stocked</div>
-        <div className="value">37,268.1616</div>
-        </div>
-   
+        {/* <Grid container justify="center">
+          <Box mt={3} style={{ width: '525px' }}>
+            <Alert variant="filled" severity="info" style={{ backgroundColor:"#06296e", marginBottom:'20px'}}>
+              Staked PSHARES can only be withdrawn after 6 epochs (36 hours) since deposit. Reward SCTS can only be claimed after 3 epochs (18 hours) since deposit.
+              Any time tokens are harvested, deposited, or withdrawn, the lockup timer gets reset.
+            </Alert>
+          </Box>
+        </Grid> */}
 
-</div>
-<div className="masonry_cards">
-    <div className="cemetry_cards-1">
-        <div className="cemetry_images">
-    <div class="rounded"><img src={Crypto11} width="50" height="50"/></div>
-    {/* <div class="rounded"><img src={Fantom} width="50" height="50"/></div> */}
-    </div>
+        <Box mt={4}>
+          <StyledBoardroom>
+            <StyledCardsWrapper>
+              <StyledCardWrapper>
+                <Harvest />
+              </StyledCardWrapper>
+              <Spacer />
+              <StyledCardWrapper>
+                <Stake />
+              </StyledCardWrapper>
+            </StyledCardsWrapper>
+          </StyledBoardroom>
+        </Box>
+      </Box>
 
-<div className='cemetry_heading'>TOMB-EARNED</div>
-<div className="deposit">0</div>
-<div className="deposit">USD:$0.00</div>
-<button className='btn btn-disabled'>Claim</button>
-    </div>
-    <div className="cemetry_cards-1">
-        <div className="cemetry_images">
-    <div class="rounded"><img src={Crypto11} width="50" height="50"/></div>
-   
-    </div>
+      <Box mt={5}>
+        <Grid container justify="center" spacing={3} mt={10}>
+          <Button 
+          className="btn btn-disabled"
+            disabled={stakedBalance.eq(0) || (!canWithdraw && !canClaimReward)}
+            // disabled = { true }
+            onClick={onRedeem}
+            color="primary"
+            variant="contained"
+          >
+            Claim and Withdraw
+          </Button>
+        </Grid>
+      </Box>
+    </>
+  ) : (
+    <UnlockWallet />
+  )}
+</Page>
+);
+};
 
-<div className='cemetry_heading'>TSHARE-STOCKED</div>
-<div className="deposit">0</div>
-<div className="deposit">USD=$0.00</div>
-<button className='btn'>Approve TSHARE</button>
-    </div>
-    </div>
-    <button className='btn margin'>Claim And Withdraw</button>
-
-      </>
-  )
+const StyledBoardroom = styled.div`
+align-items: center;
+display: flex;
+flex-direction: column;
+@media (max-width: 768px) {
+width: 100%;
 }
+`;
+
+const StyledCardsWrapper = styled.div`
+display: flex;
+width: 600px;
+@media (max-width: 768px) {
+width: 100%;
+flex-flow: column nowrap;
+align-items: center;
+}
+`;
+
+const StyledCardWrapper = styled.div`
+display: flex;
+flex: 1;
+flex-direction: column;
+@media (max-width: 768px) {
+width: 80%;
+}
+`;
+
+
+//   return (
+   
+//     <>
+//       <BackgroundImage />
+//       <Nav/>
+//       <Stats/>
+//       <div className='cemetry_title'>
+//      <div className="heading wheat">Masonry</div>
+// <div className='bio wheat'>Earn TSHARE by staking LP</div>
+// </div>
+// <div className="cemetry-small">
+
+//     <div className="cemetry-small-3">
+//         <div className="heading-cemetry">Next Epoch</div>
+//         <div className="value">02:26:34</div>
+//         </div>
+//         <div className="cemetry-small-3">
+//         <div className="heading-cemetry">APR</div>
+//         <div className="value">2,529.80%</div>
+//         </div>
+//         <div className="cemetry-small-3">
+//         <div className="heading-cemetry">Current Epoch</div>
+//         <div className="value">1,128</div>
+//         </div>
+//         <div className="cemetry-small-3">
+//         <div className="heading-cemetry">TWAP</div>
+//         <div className="value">0.9813</div>
+//         </div>
+//         <div className="cemetry-small-3">
+//         <div className="heading-cemetry">TSHARE Stocked</div>
+//         <div className="value">37,268.1616</div>
+//         </div>
+   
+
+// </div>
+// <div className="masonry_cards">
+//     <div className="cemetry_cards-1">
+//         <div className="cemetry_images">
+//     <div class="rounded"><img src={Crypto11} width="50" height="50"/></div>
+//     {/* <div class="rounded"><img src={Fantom} width="50" height="50"/></div> */}
+//     </div>
+
+// <div className='cemetry_heading'>TOMB-EARNED</div>
+// <div className="deposit">0</div>
+// <div className="deposit">USD:$0.00</div>
+// <button className='btn btn-disabled'>Claim</button>
+//     </div>
+//     <div className="cemetry_cards-1">
+//         <div className="cemetry_images">
+//     <div class="rounded"><img src={Crypto11} width="50" height="50"/></div>
+   
+//     </div>
+
+// <div className='cemetry_heading'>TSHARE-STOCKED</div>
+// <div className="deposit">0</div>
+// <div className="deposit">USD=$0.00</div>
+// <button className='btn'>Approve TSHARE</button>
+//     </div>
+//     </div>
+//     <button className='btn margin'>Claim And Withdraw</button>
+
+//       </>
+//   )
+// }
   
 export default Masonry;
