@@ -124,7 +124,7 @@ const Cemetery = () => {
 
 <div className='cemetry_heading'>Purchase TBOND</div>
 <div className="deposit">TBOND to TBOND</div>
-<div className="deposit">7,665,206.5691 TBOND available for purchase</div>
+<div className="deposit">7,665,2 TBOND available for purchase</div>
 <button className='btn'>Approve TOMB</button>
     </div>
     <div className="cemetry_cards-1">

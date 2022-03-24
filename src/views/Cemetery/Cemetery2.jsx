@@ -1,7 +1,7 @@
 
 import { useWallet } from 'use-wallet';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
-import Bank from '../Bank';
+import Bank from '../Bank/Bank';
 import moment from 'moment';
 import { Box, Container, Typography, Grid } from '@material-ui/core';
 import { NavLink } from 'react-router-dom';
@@ -14,6 +14,7 @@ import { createGlobalStyle } from 'styled-components';
 import CemeteryImage from '../../assets/img/background.png';
 import React from 'react'
 import Nav from "../../components/Nav"
+import  { useEffect } from 'react';
 import Stats from "../../views/Home/Stats"
 import Crypto11 from "../../assets/img/crypto_tomb_cash.f2b44ef4.png"
 import Fantom from "../../assets/img/fantom.7660b7c5.svg"
@@ -21,6 +22,11 @@ import MAI from "../../assets/img/MAI.0290c194.svg"
 import Waves from "../../assets/img/sky.352b80b2.svg"
 import Cemetryy from "../../assets/img/cemetry.png"
 import useBanks from '../../hooks/useBanks';
+import useBank from '../../hooks/useBank';
+import useStatsForPool from '../../hooks/useStatsForPool';
+import useRedeem from '../../hooks/useRedeem';
+import { useParams } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
 
 // const BackgroundImage = createGlobalStyle`
 //   body {
@@ -39,7 +45,14 @@ import useBanks from '../../hooks/useBanks';
 //     border-radius: 0 !important;
 // }
 // `;
-
+const useStyles = makeStyles((theme) => ({
+  gridItem: {
+    height: '100%',
+    [theme.breakpoints.up('md')]: {
+      height: '90px',
+    },
+  },
+}));
 const BackgroundImage = createGlobalStyle`
   body {
     background: url(${Waves}) no-repeat top, url(${Cemetryy}) no-repeat top;
@@ -66,12 +79,22 @@ const Cemetery = () => {
   const activeBanks = banks.filter((bank) => !bank.finished);
   const GenesisPoolStartTimeStamp = 1648346400;
   const MainFarmStartTimeStamp = 1648346400;
+  useEffect(() => window.scrollTo(0, 0));
+  const classes = useStyles();
+  const { bankId } = useParams();
+  const bank = useBank(bankId);
+ 
+
+  
+  const { onRedeem } = useRedeem(bank);
+  const statsOnPool = useStatsForPool(bank);
 
   return (
     <>  
           <BackgroundImage/>
     <Nav/>
     <Stats/>
+    
     <div className="stars"></div>
       {/* <div className='cemetry'></div> */}
     <div className='cemetry_title'>
@@ -116,15 +139,15 @@ const Cemetery = () => {
 
   <div className="cemetry-small-1">
       <div className="heading-cemetry">APR</div>
-      <div className="value">131.28%</div>
+      <div className="value">15151</div>
       </div>
       <div className="cemetry-small-1">
       <div className="heading-cemetry">Daily APR</div>
-      <div className="value">0.36%</div>
+      <div className="value"></div>
       </div>
       <div className="cemetry-small-3">
       <div className="heading-cemetry">TVL</div>
-      <div className="value">$59,894,448.77</div>
+      <div className="value"></div>
       </div>
  
 
