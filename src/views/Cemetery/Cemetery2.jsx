@@ -108,7 +108,7 @@ const Cemetery = () => {
 <div className='cemetry_heading'>TOMB-FTM-LP</div>
 <div className="deposit">Deposit:</div>
 <div className="deposit">TOMB-MAI-LP Earn TSHARE</div>
-<button className='btn'><NavLink to="/cemetery">View</NavLink></button>
+<button className='btn'><NavLink to="/cemetery" className="text">View</NavLink></button>
   </div>
 
 </div>

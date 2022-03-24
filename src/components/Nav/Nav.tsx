@@ -201,11 +201,11 @@ const Nav = () => {
               <Divider />
               <List>
                 <ListItemLink primary="Home" to="/" />
-                <ListItemLink primary="Farms" to="/farms" />
-                <ListItemLink primary="Boardroom" to="/boardroom" />
-                <ListItemLink primary="Bonds" to="/bonds" />
-                <ListItemLink primary="Rebates" to="/rebates" />
-                <ListItemLink primary="Treasury" to="/treasury" />
+                <ListItemLink primary="Cemetry" to="/farms" />
+                <ListItemLink primary="Mosonory" to="/boardroom" />
+                <ListItemLink primary="Pit" to="/bonds" />
+                <ListItemLink primary="Swap" to="/rebates" />
+                <ListItemLink primary="Regulations" to="/treasury" />
                 {/* <ListItemLink primary="Masonry" to="/masonry" />
                 <ListItemLink primary="Pit" to="/pit" />
                 <ListItemLink primary="SBS" to="/sbs" />
@@ -224,7 +224,7 @@ const Nav = () => {
                   <ListItemText>2omb</ListItemText>
                 </ListItem> */}
                 <ListItem style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <AccountButton text="Connect" />
+                  <AccountButton text="My Wallet"/>
                 </ListItem>
               </List>
             </Drawer>
